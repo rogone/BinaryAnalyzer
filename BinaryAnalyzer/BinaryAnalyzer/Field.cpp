@@ -330,3 +330,38 @@ void IntField::clearBitField()
 
 	m_mapBitField.clear();
 }
+
+IntField::BitField::BitField(const std::string& name, IntField field, uint32_t from, size_t sz) :
+m_strName(name),
+m_refField(field),
+m_nFrom(from),
+m_nSize(sz)
+{
+
+}
+
+std::string IntField::BitField::name() const
+{
+	return m_strName;
+}
+
+uint32_t IntField::BitField::from() const
+{
+	return m_nFrom;
+}
+
+size_t IntField::BitField::size() const
+{
+	return m_nSize;
+}
+
+int IntField::BitField::get(uint32_t& value) const
+{
+	return m_refField.get(value, m_nFrom, m_nSize);
+}
+
+int IntField::BitField::set(uint32_t value)
+{
+	return m_refField.set(value, m_nFrom, m_nSize);
+}
+

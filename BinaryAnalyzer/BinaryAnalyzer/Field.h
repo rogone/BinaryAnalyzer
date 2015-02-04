@@ -84,16 +84,17 @@ protected:
 	class BitField
 	{
 	public:
-		BitField(const std::string& name, IntField*, uint32_t from, size_t sz);
+		BitField(const std::string& name, IntField&, uint32_t from, size_t sz);
 		~BitField() {};
 
 		std::string name() const;
 		uint32_t from() const;
 		size_t size() const;
-		uint32_t get() const;
+		int get(uint32_t&) const;
 		int set(uint32_t);
 	protected:
 		std::string m_strName;
+		IntField& m_refField;
 		uint32_t m_nFrom;
 		size_t m_nSize;
 	};
