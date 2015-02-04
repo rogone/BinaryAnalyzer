@@ -63,8 +63,8 @@ public:
 	int set(uint32_t value, uint32_t from, size_t sz);
 	int set(uint32_t value, const std::string& name);
 
-	uint32_t get(uint32_t from, size_t sz);
-	uint32_t get(const std::string& name);
+	 int get(uint32_t&, uint32_t from, size_t sz);
+	 int get(uint32_t&, const std::string& name);
 
 	bool needReverse();
 	void needReverse(bool);
@@ -87,9 +87,13 @@ protected:
 		BitField(const std::string& name, IntField*, uint32_t from, size_t sz);
 		~BitField() {};
 
+		std::string name() const;
+		uint32_t from() const;
+		size_t size() const;
 		uint32_t get() const;
 		int set(uint32_t);
 	protected:
+		std::string m_strName;
 		uint32_t m_nFrom;
 		size_t m_nSize;
 	};
