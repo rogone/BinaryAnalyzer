@@ -1,0 +1,27 @@
+#ifndef __BINARY_ANALYZER_ERROR_H__
+#define __BINARY_ANALYZER_ERROR_H__
+
+namespace error
+{
+    enum ErrorNumber
+    {
+        SUCCESS = 0L,
+        ERROR = -1L,
+
+		ERR_INPUT_TOO_SHORT					= 0xE0000001L,
+		ERR_FIELD_EMPTY_NAME				= 0xE0000002L,
+
+        ERR_STRING_EMPTY_INPUT			= 0xE0001001L,
+        ERR_STRING_EMPTY_OUTPUT		= 0xE0001002L,
+
+        ERR_INT_OVERFLOW						= 0xE0002001L,
+		ERR_INT_UNSUPPORTED					= 0xE0002002L,
+
+        ERR_BIT_OVERFLOW						=	0xE0003001L,
+        ERR_BIT_ZERO_SIZE						= 0xE0003002L,
+		ERR_BIT_NO_SUCH_FIELD			= 0xE0003003L,
+		ERR_BIT_FIELD_EXIST					= 0xE0003004L,
+    };
+};
+
+#endif
