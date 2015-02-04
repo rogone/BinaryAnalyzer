@@ -146,7 +146,7 @@ int IntField::addBitField(const std::string& name, uint32_t from, size_t sz)
 	BitFieldMap::const_iterator it = m_mapBitField.find(from);
 	if (it == m_mapBitField.end())
 	{
-		BitField* p = new BitField(name, this, from, sz);
+		BitField* p = new BitField(name, *this, from, sz);
 		m_mapBitField[from] = p;
 		return SUCCESS;
 	} 
@@ -331,7 +331,7 @@ void IntField::clearBitField()
 	m_mapBitField.clear();
 }
 
-IntField::BitField::BitField(const std::string& name, IntField field, uint32_t from, size_t sz) :
+IntField::BitField::BitField(const std::string& name, IntField& field, uint32_t from, size_t sz):
 m_strName(name),
 m_refField(field),
 m_nFrom(from),
